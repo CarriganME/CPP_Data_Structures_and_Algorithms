@@ -1,0 +1,168 @@
+//Mike Carrigan
+// ECE 2620
+// Lab 6 Doubly Linked Lists
+#include "intdlllist.h"
+#include "intdllnode.h"
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+
+int main(){
+	IntDLLList TestList = IntDLLList();
+	int choice;
+	const int EMPTY_LIST = 1;
+	while( choice !=5)
+	{
+		cout << " \n" << "Choose an action: " << endl <<"1. Create Simple (Unsorted) List" << endl << "2. Create Sorted List" << endl << "3. Create Queue (FIFO)" << endl << "4. Create Stack (LIFO)" << endl << "5. Exit Program" << endl;
+		   
+		cin >> choice;
+		cout << "choice = " << choice << endl;
+
+		//Define choices
+		switch( choice)
+		{
+			case 1: 
+			{
+					//Create unsorted list
+					int choice1 = 0, act = 0;
+					while( choice1 !=17)
+					{
+						cout << " \n" << "Choose an action: " << endl <<"11. Enter integer for insertion at head of list" << endl << "12. Enter integer for insertion at tail of list" << endl << "13. Display and delete integer from head of list" << endl << "14. Display and delete integer from tail of list" << endl << "15. Search for integer in list, and delete that node" << endl << "16. Display contents of list from head to tail, in order" << endl << "17. Exit Program" << endl;
+						cin >> choice1;
+						cout << "choice = " << choice1 << endl;
+
+						//Define choices
+						switch( choice1)
+						{
+							case 11: cout << endl <<"Enter integer for insertion at head of list " << endl; 
+									cin >> act;
+									cout << endl;
+									TestList.addToHead(act);
+									cout << "Integer inserted at head of list" << endl;
+									break;
+							case 12: cout << endl <<"Enter integer for insertion at tail of list " << endl; 
+									cin >> act;
+									cout << endl;
+									TestList.addToTail(act);
+									cout << "Integer inserted at tail of list" << endl;
+									break;
+							case 13: cout << endl <<"The integer deleted from the head of the list is: " << TestList.deleteFromHead() << endl; break;
+							case 14:  cout << endl <<"The integer deleted from the tail of the list is: " << TestList.deleteFromTail() << endl; break;
+							case 15: cout << "Enter integer for search and deletion: " << endl;
+									cin >> act;
+									TestList.deleteNode (act);
+									cout << endl << "The integer " << act << " has been deleted from the list." <<endl;
+									break;
+							case 16: cout << "Printing contents of list from head to tail" << endl;
+									TestList.printlist(); break;
+							case 17: cout << "Exiting\n"; break;
+							default: cout << endl << "error: invalid choice entry\n"; break;
+						}
+					}
+			break;
+			}
+			case 2:
+				{ 
+					//Create Sorted List
+					int choice2 = 0, act1 = 0;
+					while( choice2 !=4)
+					{
+						cout << " \n" << "Choose an action: " << endl <<"1. Enter interger for sorted insertion (increasing order) into list" << endl << "2. Search and delete integer, if present in list" << endl << "3. Display contents of sorted list of integers, in increasing order" << endl << "4. Exit Program" << endl; 				cin >> choice2;
+						cout << "choice = " << choice2 << endl;
+
+						//Define choices
+						switch( choice2)
+						{
+							case 1: cout << endl <<"Enter integer for insertion in sorted list " << endl; 
+									cin >> act1;
+									cout << endl;
+									TestList.addSorted(act1);
+									cout << "Integer inserted at head of list" << endl;
+									break;
+							case 2: cout << endl <<"Enter integer to be removed from list " << endl; 
+									cin >> act1;
+									cout << endl;
+									TestList.deleteNode(act1);
+									cout << "Integer removed from list" << endl;
+									break;
+							case 3: cout << endl <<"Displaying contents of list in order: " << endl;
+									TestList.printlist();
+									cout << endl;
+									break;
+							case 4: cout << "Exiting\n"; break;
+							default: cout << endl << "error: invalid choice entry\n"; break;
+						}
+					}
+					break;
+				}
+			case 3: 
+				{
+					//Create Queue 
+					int choice3 = 0, act2 = 0;
+					while( choice3 !=4)
+					{
+						cout << " \n" << "Choose an action: " << endl <<"1. Enqueue" << endl << "2. Dequeue" << endl << "3. Print queue" << endl << "4. Exit Program" << endl;
+						cin >> choice3;
+						cout << "choice = " << choice3 << endl;
+
+						//Define choices
+						switch( choice3)
+						{
+							case 1: cout << endl <<"Enter integer to enqueue" << endl; 
+									cin >> act2;
+									cout << endl;
+									TestList.addToTail(act2);
+									cout << "Integer inserted at head of list" << endl;
+									break;
+							case 2: cout << endl <<"Integer to be dequeued: " << TestList.deleteFromTail() << endl; 
+									break;
+							case 3: cout << endl <<"Displaying contents of queue in order: " << endl;
+									TestList.printlist();
+									cout << endl;
+									break;
+							case 4: cout << "Exiting\n"; break;
+							default: cout << endl << "error: invalid choice entry\n"; break;
+						}
+					}
+					break;
+				}
+			case 4: 
+				{
+					//Create Stack
+					int choice4 = 0, act3 = 0;
+					while( choice4 !=4)
+					{
+						cout << " \n" << "Choose an action: " << endl <<"1. Enqueue" << endl << "2. Dequeue" << endl << "3. Print queue" << endl << "4. Exit Program" << endl;
+						cin >> choice4;
+						cout << "choice = " << choice4 << endl;
+
+						//Define choices
+						switch( choice4)
+						{
+							case 1: cout << endl <<"Enter integer to push" << endl; 
+									cin >> act3;
+									cout << endl;
+									TestList.addToHead(act3);
+									cout << "Integer inserted at head of list" << endl;
+									break;
+							case 2: cout << endl <<"Integer Popped: " << TestList.deleteFromHead() << endl; 
+									break;
+							case 3: cout << endl <<"Displaying contents of stack in order: " << endl;
+									TestList.printlist();
+									cout << endl;
+									break;
+							case 4: cout << "Exiting\n"; break;
+							default: cout << endl << "error: invalid choice entry\n"; break;
+						}
+					}
+					break;
+				}
+			case 5: cout << "Exiting\n"; break;
+			
+			default: cout << endl << "error: invalid choice entry\n"; break;
+		}
+	}
+	return 0;
+}
+
